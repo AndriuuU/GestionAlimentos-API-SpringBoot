@@ -26,4 +26,8 @@ public class Ubicacion {
 
     @Column(nullable = false)
     private int capacidad;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

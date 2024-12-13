@@ -32,4 +32,7 @@ public class Existencia {
     @Column(name = "fecha_entrada", nullable = false)
     private LocalDate fechaEntrada;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

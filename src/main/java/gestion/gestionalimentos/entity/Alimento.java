@@ -29,4 +29,7 @@ public class Alimento {
     @Column(name = "fecha_caducidad", nullable = false)
     private LocalDate fechaCaducidad;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

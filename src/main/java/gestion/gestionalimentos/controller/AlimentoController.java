@@ -1,7 +1,9 @@
 package gestion.gestionalimentos.controller;
 
 import gestion.gestionalimentos.entity.Alimento;
+import gestion.gestionalimentos.entity.Ubicacion;
 import gestion.gestionalimentos.service.AlimentoService;
+import gestion.gestionalimentos.service.ExistenciaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +19,10 @@ import java.util.Optional;
 public class AlimentoController {
 
     @Autowired
+    private ExistenciaService existenciaService;
+    @Autowired
     private AlimentoService alimentoService;
+
 
     @GetMapping
     public ResponseEntity<List<Alimento>> getAllAlimentos() {
@@ -83,5 +88,10 @@ public class AlimentoController {
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error deleting alimento", e);
         }
+    }
+
+    @GetMapping("/{alimentoId}/sugerir-ubicacion")
+    public Ubicacion sugerirUbicacion(@PathVariable Long alimentoId) {
+        return existenciaService.sugerirUbicacion(alimentoId);
     }
 }

@@ -1,6 +1,8 @@
 package gestion.gestionalimentos.controller;
 
+import gestion.gestionalimentos.entity.Existencia;
 import gestion.gestionalimentos.entity.Ubicacion;
+import gestion.gestionalimentos.service.ExistenciaService;
 import gestion.gestionalimentos.service.UbicacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,9 @@ public class UbicacionController {
 
     @Autowired
     private UbicacionService ubicacionService;
+
+    @Autowired
+    private ExistenciaService existenciaService;
 
     @GetMapping
     public List<Ubicacion> getAllUbicaciones() {
@@ -48,5 +53,9 @@ public class UbicacionController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+    @GetMapping("/ubicacion/{ubicacionId}/fifo")
+    public List<Existencia> getExistenciasFIFO(@PathVariable Long ubicacionId) {
+        return existenciaService.getExistenciasOrdenadasPorFecha(ubicacionId);
     }
 }

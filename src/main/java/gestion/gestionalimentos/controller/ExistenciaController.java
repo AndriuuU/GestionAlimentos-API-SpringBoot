@@ -76,4 +76,18 @@ public class ExistenciaController {
         }
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/proximos-caducar")
+    public List<Existencia> alimentosProximosACaducar(@RequestParam(defaultValue = "7") int dias) {
+        return existenciaService.getAlimentosProximosACaducar(dias);
+    }
+
+    @PutMapping("/{id}/mover")
+    public Existencia moverAlimento(@PathVariable Long id, @RequestParam Long nuevaUbicacionId) {
+        return existenciaService.moveAlimento(id, nuevaUbicacionId);
+    }
+
+
+
+
+
 }

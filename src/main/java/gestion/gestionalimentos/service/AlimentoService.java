@@ -9,5 +9,5 @@ public interface AlimentoService {
     Optional<Alimento> getAlimentoById(Long id);
     Alimento saveAlimento(Alimento alimento);
     void deleteAlimento(Long id);
-
+    Alimento updateAlimento(Long id,Alimento alimento);
 }

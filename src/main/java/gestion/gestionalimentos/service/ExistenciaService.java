@@ -10,4 +10,6 @@ public interface ExistenciaService {
     Optional<Existencia> getExistenciaById(Long id);
     Existencia saveExistencia(Existencia existencia);
     void deleteExistencia(Long id);
+
+    Existencia updateExistencia(Long id, Existencia existencia);
 }

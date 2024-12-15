@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Gestión de Alimentos</title>
+    <layout:decorator="header.html"/>
+</head>
+
+<body>
+<h1>Lista de Alimentos</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Fecha de Caducidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alimento : ${alimentos}">
+        <td th:text="${alimento.nombre}"></td>
+        <td th:text="${alimento.tipo}"></td>
+        <td th:text="${alimento.estado}"></td>
+        <td th:text="${alimento.fechaCaducidad}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Formulario de Ubicación</title>
+    <layout:decorator="header.html"/>
+
+</head>
+<body>
+<h1 th:text="${ubicacion.id != null ? 'Editar Ubicación' : 'Nueva Ubicación'}"></h1>
+<form th:action="@{/ubicaciones/guardar}" th:object="${ubicacion}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" th:field="*{descripcion}" required />
+    </div>
+    <div>
+        <label for="tipoUbicacion">Tipo de Ubicación:</label>
+        <input type="text" id="tipoUbicacion" th:field="*{tipoUbicacion}" required />
+    </div>
+    <div>
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" th:field="*{capacidad}" required />
+    </div>
+    <button type="submit">Guardar</button>
+    <a href="/ubicaciones">Cancelar</a>
+</form>
+</body>
+</html>

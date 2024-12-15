@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Lista de Existencias</title>
+    <layout:decorator="header.html"/>
+</head>
+
+<body>
+<h1>Lista de Existencias</h1>
+<a href="/existencias/nueva">Nueva Existencia</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Alimento</th>
+        <th>Ubicación</th>
+        <th>Cantidad</th>
+        <th>Fecha de Entrada</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="existencia : ${existencias}">
+        <td th:text="${existencia.id}"></td>
+        <td th:text="${existencia.alimento.nombre}"></td>
+        <td th:text="${existencia.ubicacion.descripcion}"></td>
+        <td th:text="${existencia.cantidad}"></td>
+        <td th:text="${existencia.fechaEntrada}"></td>
+        <td>
+            <a th:href="@{/existencias/editar/{id}(id=${existencia.id})}">Editar</a> |
+            <a th:href="@{/existencias/eliminar/{id}(id=${existencia.id})}" onclick="return confirm('¿Está seguro?')">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Lista de Ubicaciones</title>
+    <layout:decorator="header.html"/>
+</head>
+
+<body>
+<h1>Lista de Ubicaciones</h1>
+<a href="/ubicaciones/nueva">Nueva Ubicación</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Tipo de Ubicación</th>
+        <th>Capacidad</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ubicacion : ${ubicaciones}">
+        <td th:text="${ubicacion.id}"></td>
+        <td th:text="${ubicacion.descripcion}"></td>
+        <td th:text="${ubicacion.tipoUbicacion}"></td>
+        <td th:text="${ubicacion.capacidad}"></td>
+        <td>
+            <a th:href="@{/ubicaciones/editar/{id}(id=${ubicacion.id})}">Editar</a> |
+            <a th:href="@{/ubicaciones/eliminar/{id}(id=${ubicacion.id})}" onclick="return confirm('¿Está seguro?')">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

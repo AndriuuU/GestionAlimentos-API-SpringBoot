@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Formulario de Existencia</title>
+    <layout:decorator="header.html"/>
+
+</head>
+<body>
+<h1 th:text="${#strings.isEmpty(existencia.id) ? 'Nueva Existencia' : 'Editar Existencia'}"></h1>
+<form th:action="@{/existencias/guardar}" th:object="${existencia}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="alimento">Alimento:</label>
+    <select id="alimento" th:field="*{alimento.id}">
+        <option th:each="alimento : ${alimentos}" th:value="${alimento.id}" th:text="${alimento.nombre}"></option>
+    </select>
+
+    <label for="ubicacion">Ubicación:</label>
+    <select id="ubicacion" th:field="*{ubicacion.id}">
+        <option th:each="ubicacion : ${ubicaciones}" th:value="${ubicacion.id}" th:text="${ubicacion.descripcion}"></option>
+    </select>
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" th:field="*{cantidad}" />
+
+    <label for="fechaEntrada">Fecha de Entrada:</label>
+    <input type="date" id="fechaEntrada" th:field="*{fechaEntrada}" />
+
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
